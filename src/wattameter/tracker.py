@@ -181,12 +181,24 @@ class BaseTracker(AbstractContextManager):
 class Tracker(BaseTracker):
     """Generic tracker that reads data from a BaseReader at a specified frequency.
 
+    Note that start() and stop() methods are not overridden, so they will use the base class implementation. This means that the following code will not write information to disk, but will only read data and store it in memory:
+
+    ```python
+    reader = MyReader()
+    tracker = Tracker(reader)
+    tracker.start()
+    # Do some other work here...
+    tracker.stop()
+    ```
+
     :param reader: An instance of BaseReader to read data from.
     :param dt_read: Time interval (in seconds) between consecutive readings.
     :param freq_write: Frequency (in number of reads) to write the collected data.
+        Used on :meth:`track_until_forced_exit` and within the `with` statement.
         If set to 0, data is never written.
     :param output: Optional output stream to write the collected data. If not provided,
         the output stream is as defined in :meth:`output`.
+        Used on :meth:`track_until_forced_exit` and within the `with` statement.
 
     .. attribute:: reader
 
@@ -210,6 +222,7 @@ class Tracker(BaseTracker):
     .. attribute:: freq_write
 
         Frequency (in number of reads) to write the collected data.
+        Used on :meth:`track_until_forced_exit` and within the `with` statement.
         If set to 0, data is never written.
     """
 
@@ -446,9 +459,11 @@ class TrackerArray(BaseTracker):
     :param readers: List of :class:`BaseReader` instances to read data from.
     :param dt_read: Time interval (in seconds) between consecutive readings.
     :param freq_write: Frequency (in number of reads) to write the collected data.
+        Used on :meth:`track_until_forced_exit` and within the `with` statement.
         If set to 0, data is never written.
     :param outputs: List of output streams for each tracker. If not provided,
         the output streams are as defined in each tracker's :meth:`output`.
+        Used on :meth:`track_until_forced_exit` and within the `with` statement.
 
     .. attribute:: trackers
 
@@ -457,6 +472,7 @@ class TrackerArray(BaseTracker):
     .. attribute:: freq_write
 
         Frequency (in number of reads) to write the collected data.
+        Used on :meth:`track_until_forced_exit` and within the `with` statement.
         If set to 0, data is never written.
     """
 
