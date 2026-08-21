@@ -128,7 +128,7 @@ pip<span class="w"> </span>install<span class="w"> </span>pandas
     <span class="n">reader</span><span class="o">=</span><span class="n">NVMLReader</span><span class="p">((</span><span class="n">Power</span><span class="p">,)),</span>
     <span class="n">dt_read</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Time interval for reading power data (seconds)</span>
     <span class="n">freq_write</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>  <span class="c1"># Frequency (# reads) for writing power data to file</span>
-    <span class="n">output</span><span class="o">=</span><span class="s2">&quot;power_log.txt&quot;</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s2">"power_log.txt"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">tracker</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 <span class="c1"># ... your code ...</span>
@@ -140,7 +140,7 @@ pip<span class="w"> </span>install<span class="w"> </span>pandas
     <span class="n">reader</span><span class="o">=</span><span class="n">NVMLReader</span><span class="p">((</span><span class="n">Power</span><span class="p">,)),</span>
     <span class="n">dt_read</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
     <span class="n">freq_write</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
-    <span class="n">output</span><span class="o">=</span><span class="s2">&quot;power_log.txt&quot;</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s2">"power_log.txt"</span><span class="p">,</span>
 <span class="p">)</span> <span class="k">as</span> <span class="n">tracker</span><span class="p">:</span>
     <span class="c1"># ... your code ...</span>
 </pre></div>
@@ -198,8 +198,8 @@ pip<span class="w"> </span>install<span class="w"> </span>pandas
 <p>For usage within SLURM jobs, we recommend using our utility functions <code class="docutils literal notranslate"><span class="pre">start_wattameter</span></code> and <code class="docutils literal notranslate"><span class="pre">stop_wattameter</span></code> in <a class="reference download internal" download="" href="_downloads/33bddaa72684466a9a63127144c3cb9c/slurm.sh"><span class="xref download myst">slurm.sh</span></a>. Follow the example <a class="reference download internal" download="" href="_downloads/3112ff898930198f42cb76f0094b7a5d/slurm.sh"><span class="xref download myst">examples/slurm.sh</span></a>, i.e.,</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In a Python environment with wattameter installed,</span>
 <span class="c1"># load wattameter slurm utilities</span>
-<span class="nv">WATTAPATH</span><span class="o">=</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;import wattameter; import os; print(os.path.dirname(wattameter.__file__))&#39;</span><span class="k">)</span>
-<span class="nb">source</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">WATTAPATH</span><span class="si">}</span><span class="s2">/utils/slurm.sh&quot;</span>
+<span class="nv">WATTAPATH</span><span class="o">=</span><span class="k">$(</span>python<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import wattameter; import os; print(os.path.dirname(wattameter.__file__))'</span><span class="k">)</span>
+<span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">WATTAPATH</span><span class="si">}</span><span class="s2">/utils/slurm.sh"</span>
 
 <span class="c1"># Run wattameter on all nodes</span>
 start_wattameter

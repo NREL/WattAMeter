@@ -168,7 +168,7 @@ pip<span class="w"> </span>install<span class="w"> </span>paho-mqtt
 <span class="w">  </span>--mqtt-port<span class="w"> </span><span class="m">1883</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mqtt-username<span class="w"> </span>myuser<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mqtt-password<span class="w"> </span>mypassword<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--mqtt-topic-prefix<span class="w"> </span><span class="s2">&quot;hpc/wattameter&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mqtt-topic-prefix<span class="w"> </span><span class="s2">"hpc/wattameter"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mqtt-qos<span class="w"> </span><span class="m">1</span>
 </pre></div>
 </div>
@@ -219,12 +219,12 @@ pip<span class="w"> </span>install<span class="w"> </span>paho-mqtt
 
 <span class="c1"># Configure MQTT publishing</span>
 <span class="n">mqtt_config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;broker_host&quot;</span><span class="p">:</span> <span class="s2">&quot;mqtt.example.com&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;broker_port&quot;</span><span class="p">:</span> <span class="mi">1883</span><span class="p">,</span>
-    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;mypassword&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;topic_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;hpc/wattameter&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;qos&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"broker_host"</span><span class="p">:</span> <span class="s2">"mqtt.example.com"</span><span class="p">,</span>
+    <span class="s2">"broker_port"</span><span class="p">:</span> <span class="mi">1883</span><span class="p">,</span>
+    <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"myuser"</span><span class="p">,</span>
+    <span class="s2">"password"</span><span class="p">:</span> <span class="s2">"mypassword"</span><span class="p">,</span>
+    <span class="s2">"topic_prefix"</span><span class="p">:</span> <span class="s2">"hpc/wattameter"</span><span class="p">,</span>
+    <span class="s2">"qos"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="c1"># Create tracker with MQTT enabled</span>
@@ -232,7 +232,7 @@ pip<span class="w"> </span>install<span class="w"> </span>paho-mqtt
     <span class="n">reader</span><span class="o">=</span><span class="n">NVMLReader</span><span class="p">((</span><span class="n">Power</span><span class="p">,)),</span>
     <span class="n">dt_read</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
     <span class="n">freq_write</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span>
-    <span class="n">output</span><span class="o">=</span><span class="s2">&quot;power_log.txt&quot;</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s2">"power_log.txt"</span><span class="p">,</span>
     <span class="n">mqtt_config</span><span class="o">=</span><span class="n">mqtt_config</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -245,17 +245,17 @@ pip<span class="w"> </span>install<span class="w"> </span>paho-mqtt
 <section id="environment-variables">
 <h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
 <p>For security, you can use environment variables for credentials:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MQTT_BROKER</span><span class="o">=</span><span class="s2">&quot;mqtt.example.com&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">MQTT_USERNAME</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">MQTT_PASSWORD</span><span class="o">=</span><span class="s2">&quot;mypassword&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MQTT_BROKER</span><span class="o">=</span><span class="s2">"mqtt.example.com"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MQTT_USERNAME</span><span class="o">=</span><span class="s2">"myuser"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MQTT_PASSWORD</span><span class="o">=</span><span class="s2">"mypassword"</span>
 
 <span class="c1"># Then use in your script</span>
 import<span class="w"> </span>os
 
 <span class="nv">mqtt_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;broker_host&quot;</span>:<span class="w"> </span>os.getenv<span class="o">(</span><span class="s2">&quot;MQTT_BROKER&quot;</span><span class="o">)</span>,
-<span class="w">    </span><span class="s2">&quot;username&quot;</span>:<span class="w"> </span>os.getenv<span class="o">(</span><span class="s2">&quot;MQTT_USERNAME&quot;</span><span class="o">)</span>,
-<span class="w">    </span><span class="s2">&quot;password&quot;</span>:<span class="w"> </span>os.getenv<span class="o">(</span><span class="s2">&quot;MQTT_PASSWORD&quot;</span><span class="o">)</span>,
+<span class="w">    </span><span class="s2">"broker_host"</span>:<span class="w"> </span>os.getenv<span class="o">(</span><span class="s2">"MQTT_BROKER"</span><span class="o">)</span>,
+<span class="w">    </span><span class="s2">"username"</span>:<span class="w"> </span>os.getenv<span class="o">(</span><span class="s2">"MQTT_USERNAME"</span><span class="o">)</span>,
+<span class="w">    </span><span class="s2">"password"</span>:<span class="w"> </span>os.getenv<span class="o">(</span><span class="s2">"MQTT_PASSWORD"</span><span class="o">)</span>,
 <span class="o">}</span>
 </pre></div>
 </div>
@@ -280,12 +280,12 @@ import<span class="w"> </span>os
 <h3>Message Payload<a class="headerlink" href="#message-payload" title="Link to this heading"></a></h3>
 <p>Each message is a JSON object containing:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;timestamp[ns]&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1703347200000000000</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;timestamp[iso]&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-12-23T12:00:00.000000&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;reading-time[ns]&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;gpu-0[mW]&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300000.5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;experiment_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;job-12345&quot;</span>
+<span class="w">  </span><span class="nt">"timestamp[ns]"</span><span class="p">:</span><span class="w"> </span><span class="mi">1703347200000000000</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"timestamp[iso]"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-23T12:00:00.000000"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"reading-time[ns]"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234567</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"gpu-0[mW]"</span><span class="p">:</span><span class="w"> </span><span class="mf">300000.5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"experiment_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"job-12345"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -310,12 +310,12 @@ import<span class="w"> </span>os
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GPU 0 Power: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gpu-0[mW]&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;N/A&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2"> W at </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;timestamp[iso]&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"GPU 0 Power: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'gpu-0[mW]'</span><span class="p">,</span><span class="w"> </span><span class="s1">'N/A'</span><span class="p">)</span><span class="si">}</span><span class="s2"> W at </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'timestamp[iso]'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 <span class="n">client</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
-<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;mqtt.example.com&quot;</span><span class="p">,</span> <span class="mi">1883</span><span class="p">)</span>
-<span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s2">&quot;wattameter/+/data&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"mqtt.example.com"</span><span class="p">,</span> <span class="mi">1883</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s2">"wattameter/+/data"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -331,7 +331,7 @@ import<span class="w"> </span>os
 wattameter<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tracker<span class="w"> </span><span class="m">0</span>.1,nvml-power<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mqtt-broker<span class="w"> </span>mqtt.hpc.local<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--mqtt-topic-prefix<span class="w"> </span><span class="s2">&quot;hpc/jobs/</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--mqtt-topic-prefix<span class="w"> </span><span class="s2">"hpc/jobs/</span><span class="nv">$SLURM_JOB_ID</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--id<span class="w"> </span><span class="nv">$SLURM_JOB_ID</span>
 </pre></div>
 </div>
@@ -346,14 +346,14 @@ wattameter<span class="w"> </span><span class="se">\</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">on_message</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">userdata</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">payload</span><span class="p">)</span>
-    <span class="n">power</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gpu-0[mW]&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'gpu-0[mW]'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">power</span> <span class="o">&gt;</span> <span class="n">POWER_THRESHOLD</span><span class="p">:</span>
-        <span class="n">send_alert</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;High power consumption: </span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="s2">W&quot;</span><span class="p">)</span>
+        <span class="n">send_alert</span><span class="p">(</span><span class="sa">f</span><span class="s2">"High power consumption: </span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="s2">W"</span><span class="p">)</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 <span class="n">client</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
-<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;mqtt.example.com&quot;</span><span class="p">,</span> <span class="mi">1883</span><span class="p">)</span>
-<span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s2">&quot;wattameter/nvmlreader/data&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">"mqtt.example.com"</span><span class="p">,</span> <span class="mi">1883</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="s2">"wattameter/nvmlreader/data"</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -502,7 +502,7 @@ wattameter<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--tracker<span class="w"> </span><span class="m">1</span>.0,rapl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mqtt-broker<span class="w"> </span>mqtt.hpc.local<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--mqtt-port<span class="w"> </span><span class="m">1883</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--mqtt-topic-prefix<span class="w"> </span><span class="s2">&quot;hpc/node01&quot;</span>
+<span class="w">  </span>--mqtt-topic-prefix<span class="w"> </span><span class="s2">"hpc/node01"</span>
 </pre></div>
 </div>
 </section>
@@ -513,10 +513,10 @@ wattameter<span class="w"> </span><span class="se">\</span>
 
 <span class="c1"># Configure MQTT</span>
 <span class="n">mqtt_config</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;broker_host&quot;</span><span class="p">:</span> <span class="s2">&quot;mqtt.example.com&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;broker_port&quot;</span><span class="p">:</span> <span class="mi">1883</span><span class="p">,</span>
-    <span class="s2">&quot;topic_prefix&quot;</span><span class="p">:</span> <span class="s2">&quot;hpc/experiment&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;qos&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">"broker_host"</span><span class="p">:</span> <span class="s2">"mqtt.example.com"</span><span class="p">,</span>
+    <span class="s2">"broker_port"</span><span class="p">:</span> <span class="mi">1883</span><span class="p">,</span>
+    <span class="s2">"topic_prefix"</span><span class="p">:</span> <span class="s2">"hpc/experiment"</span><span class="p">,</span>
+    <span class="s2">"qos"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="c1"># Track multiple readers with MQTT</span>
@@ -533,7 +533,7 @@ wattameter<span class="w"> </span><span class="se">\</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Power tracking complete. Check MQTT topics for data.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Power tracking complete. Check MQTT topics for data."</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -559,10 +559,10 @@ wattameter<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wattameter/+/data</span>
 <span class="nt">metrics</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wattameter_power_watts</span>
-<span class="w">    </span><span class="nt">help</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GPU/CPU</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">consumption&quot;</span>
+<span class="w">    </span><span class="nt">help</span><span class="p">:</span><span class="w"> </span><span class="s">"GPU/CPU</span><span class="nv"> </span><span class="s">power</span><span class="nv"> </span><span class="s">consumption"</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gauge</span>
 <span class="w">    </span><span class="nt">mqtt_topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wattameter/+/data</span>
-<span class="w">    </span><span class="nt">value_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;power[W]&quot;</span>
+<span class="w">    </span><span class="nt">value_path</span><span class="p">:</span><span class="w"> </span><span class="s">"power[W]"</span>
 </pre></div>
 </div>
 </section>
@@ -576,10 +576,10 @@ wattameter<span class="w"> </span><span class="se">\</span>
 <span class="n">tracker</span> <span class="o">=</span> <span class="n">Tracker</span><span class="p">(</span>
     <span class="n">reader</span><span class="o">=</span><span class="n">NVMLReader</span><span class="p">((</span><span class="n">Power</span><span class="p">,)),</span>
     <span class="n">mqtt_config</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;broker_host&quot;</span><span class="p">:</span> <span class="s2">&quot;mqtt.example.com&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;metadata&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;experiment_id&quot;</span><span class="p">:</span> <span class="s2">&quot;exp-123&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;node-01&quot;</span><span class="p">,</span>
+        <span class="s2">"broker_host"</span><span class="p">:</span> <span class="s2">"mqtt.example.com"</span><span class="p">,</span>
+        <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"experiment_id"</span><span class="p">:</span> <span class="s2">"exp-123"</span><span class="p">,</span>
+            <span class="s2">"node_id"</span><span class="p">:</span> <span class="s2">"node-01"</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">)</span>
