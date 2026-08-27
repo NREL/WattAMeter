@@ -580,9 +580,9 @@ class TestTracker:
         reader = MockReader()
         tracker = Tracker(reader, dt_read=0.05, freq_write=2, output=output_file)
 
-        tracker.start()
+        tracker.start(freq_write=0)
         time.sleep(0.5)
-        tracker.stop()
+        tracker.stop(freq_write=0)
         assert not os.path.exists(output_file)
 
         with Tracker(reader, dt_read=0.05, freq_write=2, output=output_file):
@@ -727,9 +727,9 @@ class TestTrackerArray:
             readers, dt_read=0.05, freq_write=2, outputs=outputs
         )  # type: ignore
 
-        tracker_array.start()
+        tracker_array.start(freq_write=0)
         time.sleep(0.5)
-        tracker_array.stop()
+        tracker_array.stop(freq_write=0)
         for output in outputs:
             assert not os.path.exists(output)
 
