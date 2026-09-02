@@ -78,11 +78,13 @@ Two design choices are central for research use.
 
 For scheduler workflows, shell utilities wrap `srun` orchestration to start and stop tracking sessions across allocated nodes, including support for multiple sequential sessions in one job allocation [@nlr_wattameter_module; @wattameter_software]. Tracking sessions do not block resources and can be started and stopped independently of the main workload. The implementation includes benchmark utilities for sampling-frequency characterization and runtime overhead estimation, plus post-processing helpers for parsing and aligning log files.
 
+It is worth mentioning that WattAMeter started as a thin module on top of CodeCarbon, and slowly evolved into a separate project which enabled data collection at a higher frequency. WattAMeter has no external dependencies beyond standard Python packages, so we expect it to be easy to integrate into existing workflows.
+
 # Research impact statement
 
 WattAMeter has practical impact for teams running experiments on mixed CPU and GPU nodes, because it packages data collection and operational orchestration into one reusable workflow. Instead of writing cluster-specific wrappers for each study, users can adopt a common interface for repeated measurement studies.
 
-This impact is already visible in two concrete outputs. WattAMeter was used to generate the publicly released "Dataset of Generative AI Workload Power Profiles" in the NLR Data Catalog [@nlr_genai_power_dataset]. The same dataset, together with WattAMeter post-processing functionality, was then used in the study "Measurement of Generative AI Workload Power Profiles for Whole-Facility Data Center Infrastructure Planning" [@vercellino2026measurement].
+This impact is already visible in two concrete outputs. WattAMeter was used to generate the publicly released "Dataset of Generative AI Workload Power Profiles" in the NLR Data Catalog [@nlr_genai_power_dataset]. The same dataset, together with WattAMeter post-processing functionality, was then used in the study "Measurement of Generative AI Workload Power Profiles for Whole-Facility Data Center Infrastructure Planning" [@vercellino2026measurement]. On the other hand, the design of WattAMeter was influenced by the practical needs encountered in these studies.
 
 Additional impact is evidenced by the deployment of WattAMeter as an NLR HPC module, with documented `module load wattameter` usage and scheduler guidance for production SLURM jobs [@nlr_wattameter_module]. The documentation includes concrete operational practices, including paired start/stop commands, interpretation of node-level CPU counters, and use of exclusive allocations for CPU analyses, indicating active use beyond a purely aspirational design.
 
@@ -104,6 +106,6 @@ This manuscript draft was prepared with assistance from GPT-5.3-Codex. The autho
 
 This work was authored by the National Laboratory of the Rockies (NLR) for the U.S. Department of Energy (DOE), operated under Contract No. DE-AC36-08GO28308. Funding was provided by the NLR. The views expressed in the article do not necessarily represent the views of the DOE or the U.S. Government. The U.S. Government retains and the publisher, by accepting the article for publication, acknowledges that the U.S. Government retains a nonexclusive, paid-up, irrevocable, worldwide license to publish or reproduce the published form of this work, or allow others to do so, for U.S. Government purposes.
 
-We thank Matt Selensky (NLR) for maintaining the WattAMeter module on the NLR HPC system and supporting operational deployment.
+We thank all the NLR staff who contributed to the ideation and deployment of this software. In particular, we thank Matt Selensky (NLR) for maintaining the WattAMeter module on the NLR HPC system and supporting operational deployment.
 
 # References
