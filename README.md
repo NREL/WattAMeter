@@ -2,7 +2,17 @@
 
 ![wattameter_logo](wattameter_logo.png)
 
-**wattameter** is a Python package for monitoring and recording power usage over time, among other metrics. It enables time series data collection on hardware components such as CPUs and GPUs.
+**wattameter** is a Python package for collecting and unifying heterogeneous hardware telemetry. It supports periodic collection of CPU and GPU metrics in a common time-series format and can be launched as part of an experiment script or from SLURM job scripts. This lowers friction for users who need to run repeated measurements across different machines and software versions.
+
+The package emphasizes repeatability and operational simplicity:
+
+- unbiased sampling intervals,
+- configurable write frequency while guaranteeing a final write on shutdown,
+- parity between Python API and CLI interfaces,
+- optional real-time publication over MQTT, and
+- shell utilities that integrate with SLURM jobs.
+
+The resulting workflow reduces the overhead for experiment instrumentation and supports comparative studies across nodes, job configurations, and application versions.
 
 ## Current Features
 
