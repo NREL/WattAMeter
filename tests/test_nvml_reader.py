@@ -1,5 +1,6 @@
 import pytest
 import logging
+import importlib
 import sys
 from types import ModuleType
 from unittest.mock import Mock, patch
@@ -37,9 +38,14 @@ except ImportError:
 
     sys.modules["pynvml"] = pynvml
 
-from wattameter.readers.nvml import NVMLReader, DataThroughput
 from wattameter.readers.utils import Quantity, Energy, Power, Temperature, Utilization
 
+import wattameter.readers.nvml as nvml_module
+
+# Make sure NVMLReader uses the correct pynvml module
+nvml_module = importlib.reload(nvml_module)
+NVMLReader = nvml_module.NVMLReader
+DataThroughput = nvml_module.DataThroughput
 
 class TestNVMLReader:
     """Test cases for NVMLReader class."""

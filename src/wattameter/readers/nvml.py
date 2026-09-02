@@ -4,10 +4,8 @@
 # NVML is an optional dependency
 try:
     import pynvml
-    NVML_AVAILABLE = True
 except ImportError:
     pynvml = None  # type: ignore
-    NVML_AVAILABLE = False
 
 import logging
 
@@ -54,12 +52,11 @@ class NVMLReader(BaseReader):
     }  #: Dictionary of measurement units for physical quantities.
 
     def __init__(self, quantities=(Power,)) -> None:
-        if not NVML_AVAILABLE:
-            raise RuntimeError("NVML is not available. Please install the 'nvidia-ml-py' package.")
-
         super().__init__(quantities)
 
         self.devices = []
+        if pynvml is None:
+            return
 
         # Initialize NVML
         try:
