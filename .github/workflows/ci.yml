@@ -43,8 +43,11 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m pip install pytest pytest-asyncio numpy
-          python -m pytest
+          python -m pip install pytest pytest-asyncio numpy pytest-timeout
+          # -v prints each test name as it starts
+          # -s prevents pytest from capturing stdout so you see logs instantly
+          # --timeout=60 kills any individual test that takes longer than 60 seconds
+          python -m pytest -v -s --timeout=60
 
       - name: Run benchmarks
         if: matrix.benchmark == 'true'
