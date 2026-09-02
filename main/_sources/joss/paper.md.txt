@@ -37,7 +37,7 @@ WattAMeter addresses this need by combining heterogeneous hardware telemetry int
 
 The package emphasizes repeatability and operational simplicity:
 
-- deterministic sampling intervals,
+- unbiased sampling intervals,
 - configurable write frequency while guaranteeing a final write on shutdown,
 - parity between Python API and CLI interfaces,
 - optional real-time publication over MQTT, and
@@ -72,7 +72,7 @@ The core tracker loop is thread-based and uses fixed sampling intervals (`dt_rea
 
 Two design choices are central for research use.
 
-1. The software prioritizes periodic sampling over event-driven callbacks to produce uniformly sampled series that are easier to compare under controlled conditions. The tradeoff is that transients shorter than the selected interval may be missed. Each sample stores both a timestamp and a read-duration field, enabling users to assess telemetry overhead and timing fidelity in high-frequency collection.
+1. The software prioritizes periodic sampling over event-driven callbacks to produce unbiased sampled series that are easier to compare under controlled conditions. The tradeoff is that transients shorter than the selected interval may be missed. Each sample stores both a timestamp and a read-duration field, enabling users to assess telemetry overhead and timing fidelity in high-frequency collection.
 
 2. WattAMeter uses dual-output semantics: local files are always first-class, and MQTT publication is optional. This ensures robust baseline operation even when network services are unavailable, while still supporting live observability when needed.
 

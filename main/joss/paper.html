@@ -82,7 +82,7 @@
 <p>WattAMeter addresses this need by combining heterogeneous hardware telemetry into one Python-native interface and one CLI workflow. It supports periodic collection of CPU and GPU metrics in a common time-series format and can be launched as part of an experiment script or from SLURM job scripts. This lowers friction for users who need to run repeated measurements across different machines and software versions.</p>
 <p>The package emphasizes repeatability and operational simplicity:</p>
 <ul class="simple">
-<li><p>deterministic sampling intervals,</p></li>
+<li><p>unbiased sampling intervals,</p></li>
 <li><p>configurable write frequency while guaranteeing a final write on shutdown,</p></li>
 <li><p>parity between Python API and CLI interfaces,</p></li>
 <li><p>optional real-time publication over MQTT, and</p></li>
@@ -112,7 +112,7 @@
 <p>The core tracker loop is thread-based and uses fixed sampling intervals (<code class="docutils literal notranslate"><span class="pre">dt_read</span></code>) with configurable write cadence (<code class="docutils literal notranslate"><span class="pre">freq_write</span></code>). On shutdown, trackers perform a final read/write cycle to reduce end-of-run data loss in short jobs or interrupted sessions. The implementation also supports context-manager usage and signal-aware command-line execution, which maps well to batch-system lifecycle control.</p>
 <p>Two design choices are central for research use.</p>
 <ol class="arabic simple">
-<li><p>The software prioritizes periodic sampling over event-driven callbacks to produce uniformly sampled series that are easier to compare under controlled conditions. The tradeoff is that transients shorter than the selected interval may be missed. Each sample stores both a timestamp and a read-duration field, enabling users to assess telemetry overhead and timing fidelity in high-frequency collection.</p></li>
+<li><p>The software prioritizes periodic sampling over event-driven callbacks to produce unbiased sampled series that are easier to compare under controlled conditions. The tradeoff is that transients shorter than the selected interval may be missed. Each sample stores both a timestamp and a read-duration field, enabling users to assess telemetry overhead and timing fidelity in high-frequency collection.</p></li>
 <li><p>WattAMeter uses dual-output semantics: local files are always first-class, and MQTT publication is optional. This ensures robust baseline operation even when network services are unavailable, while still supporting live observability when needed.</p></li>
 </ol>
 <p>For scheduler workflows, shell utilities wrap <code class="docutils literal notranslate"><span class="pre">srun</span></code> orchestration to start and stop tracking sessions across allocated nodes, including support for multiple sequential sessions in one job allocation [&#64;nlr_wattameter_module; &#64;wattameter_software]. Tracking sessions do not block resources and can be started and stopped independently of the main workload. The implementation includes benchmark utilities for sampling-frequency characterization and runtime overhead estimation, plus post-processing helpers for parsing and aligning log files.</p>

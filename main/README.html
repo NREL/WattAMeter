@@ -88,9 +88,18 @@
              
   <p><a class="reference external" href="https://github.com/NatLabRockies/WattAMeter/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/NatLabRockies/WattAMeter/actions/workflows/ci.yml/badge.svg" /></a></p>
 <p><img alt="wattameter_logo" src="_images/wattameter_logo.png" /></p>
-<p><strong>wattameter</strong> is a Python package for monitoring and recording power usage over time, among other metrics. It enables time series data collection on hardware components such as CPUs and GPUs.</p>
+<p><strong>wattameter</strong> is a Python package for collecting and unifying heterogeneous hardware telemetry. It supports periodic collection of CPU and GPU metrics in a common time-series format and can be launched as part of an experiment script or from SLURM job scripts. This lowers friction for users who need to run repeated measurements across different machines and software versions.</p>
 <section id="wattameter">
 <h1>WattAMeter<a class="headerlink" href="#wattameter" title="Link to this heading"></a></h1>
+<p>The package emphasizes repeatability and operational simplicity:</p>
+<ul class="simple">
+<li><p>unbiased sampling intervals,</p></li>
+<li><p>configurable write frequency while guaranteeing a final write on shutdown,</p></li>
+<li><p>parity between Python API and CLI interfaces,</p></li>
+<li><p>optional real-time publication over MQTT, and</p></li>
+<li><p>shell utilities that integrate with SLURM jobs.</p></li>
+</ul>
+<p>The resulting workflow reduces the overhead for experiment instrumentation and supports comparative studies across nodes, job configurations, and application versions.</p>
 <section id="current-features">
 <h2>Current Features<a class="headerlink" href="#current-features" title="Link to this heading"></a></h2>
 <ul class="simple">
