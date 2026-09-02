@@ -43,7 +43,7 @@ pip install wattameter[postprocessing,mqtt]
 
 ```python
 from wattameter import Tracker
-from wattameter.readers import NVMLReader
+from wattameter.readers import NVMLReader, Power
 
 tracker = Tracker(
     reader=NVMLReader((Power,)),
